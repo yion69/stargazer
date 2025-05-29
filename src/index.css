@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Unica+One&family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Megrim&display=swap');
+@import 'tailwindcss';
+
+@font-face {
+  font-family: "Romantic";
+  src: url("/fonts/ROMANTIC.TTF");
+}
+
+@theme {
+  --font-display: "Unica One", sans-serif;
+  --font-marquee: "VT323", monospace;
+  --font-megrim: "Megrim", monospace;
+  --font-romantic: "Romantic", sans-serif;
+}
+
+.vt323-regular {
+  font-family: "VT323", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+.unica-one-regular {
+  font-family: "Unica One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.megrim-regular {
+  font-family: "Megrim", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
