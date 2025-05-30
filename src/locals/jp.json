@@ -1,7 +1,7 @@
 {
   "home": "ホーム",
   "shop": "ショップ",
-  "about": "私たちについて",
+  "about": "概要",
   "search": "検索",
   "account": "アカウント",
   "cart": "カート",
@@ -11,6 +11,8 @@
   "brandtext": "お好みのブランドでコレクションをご覧ください。",
 
   "stargazer": "Stargazer は、主流に逆らう人々のために、大胆でダークなストリートウェアを提供するアパレルショップです。",
+  
+  "official": "公式ストア",
 
   "socials": "ソーシャルメディア",
   "more information": "詳細情報",
@@ -24,5 +26,7 @@
   "enter your email": "メールアドレスを入力",
 
   "terms": "利用規約",
-  "privacy": "プライバシーポリシー"
+  "privacy": "プライバシーポリシー",
+  
+  "currency": "¥ JYP"
 }

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import ScrambleText from "../utils/ScrambledText";
+import clsx from "clsx";
 
 export default function Navbar() {
 
@@ -7,7 +9,6 @@ export default function Navbar() {
     const handleLangChange = () => { 
         if (lang == "EN") { setLang("JP") } else { setLang("EN") };
     };
-
     useEffect(() => {
         changeLang(lang.toLowerCase());
     },[lang])
@@ -18,25 +19,43 @@ export default function Navbar() {
     }
     
     return (
-        <nav className="flex flex-col justify-between w-full h-full p-4 font-display">
+        <nav className="flex flex-col justify-between w-full h-full py-4 font-display">
             <div className="flex justify-end w-full h-fit">
-                <p className="flex items-center justify-center gap-2 text-xl">
-                    € EUR | <button type="button" onClick={handleLangChange}>{ lang }</button>
+                <p className="flex items-center justify-center w-24 gap-2 text-xl">
+                    {t("currency")} | <button type="button" onClick={handleLangChange}>{ lang }</button>
                 </p>
             </div>
             <div className="flex items-end w-full">
-                <ul className="flex justify-start w-4/12 gap-10">
-                    <li><a href="#" className="text-xl">{t("home")}</a></li>
-                    <li><a href="#" className="text-xl">{t("shop")}</a></li>
-                    <li><a href="#" className="text-xl">{t("about")}</a></li>
+                <ul className={clsx("grid grid-cols-3 w-3/12", lang == "EN" ? "text-xl" : "text-base")}>
+                    <li className="hover:font-bold hover:scale-105 transition-all duration-200">
+                        <a href="#" className={clsx("flex items-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "justify-start" : "justify-start")}>
+                            <ScrambleText>{t("home")}</ScrambleText>
+                        </a>
+                    </li>
+                    <li className="hover:font-bold hover:scale-105 transition-all duration-200">
+                        <a href="#" className={clsx("flex items-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "justify-start" : "justify-start")}>
+                            <ScrambleText>{t("shop")}</ScrambleText>
+                        </a>
+                    </li>
+                    <li className="hover:font-bold hover:scale-105 transition-all duration-200">
+                        <a href="#" className={clsx("flex items-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "justify-start" : "justify-center")}>
+                            <ScrambleText>{t("about")}</ScrambleText>
+                        </a>
+                    </li>
                 </ul>
-                <div className="flex justify-center w-4/12">
+                <div className="grow flex justify-center w-6/12">
                     <h1 className="text-6xl">Stargazer</h1>
                 </div>
-                <div className="flex justify-end w-4/12 gap-10">
-                    <p className="text-xl">{t("search")}</p>
-                    <p className="text-xl">{t("account")}</p>
-                    <p className="text-xl">{t("cart")}</p>
+                <div className={clsx("grid grid-cols-3 w-3/12", lang == "EN" ? "text-xl" : "text-base")}>
+                    <a href="#" className={clsx("flex items-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "justify-end" : "justify-center")}>
+                        <ScrambleText>{t("cart")}</ScrambleText>
+                    </a>
+                    <a href="#" className={clsx("flex items-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "justify-end" : "justify-center")}>
+                        <ScrambleText>{t("search")}</ScrambleText>
+                    </a>
+                    <a href="#" className={clsx("flex items-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "justify-end" : "justify-center")}>
+                        <ScrambleText>{t("account")}</ScrambleText>
+                    </a>
                 </div>
             </div>
         </nav>

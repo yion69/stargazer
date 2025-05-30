@@ -12,6 +12,8 @@
 
     "stargazer": "Stargazer clothing store with bold, dark streetwear for those who defy the mainstream.",
 
+    "official": "Official Stores",
+
     "socials": "Socials",
     "more information": "More Information",
     "size chart": "Size Chart",
@@ -24,5 +26,7 @@
     "enter your email": "Enter your email",
 
     "terms": "Terms of Service",
-    "privacy": "Privacy Policy"
+    "privacy": "Privacy Policy",
+
+    "currency": "$ USD"
 }

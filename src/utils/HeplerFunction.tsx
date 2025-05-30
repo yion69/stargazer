@@ -16,6 +16,7 @@ Features:
 export default function horizontalLoop(items, config) {
   items = gsap.utils.toArray(items);
   config = config || {};
+  const loopGap = parseFloat(config.loopGap) || 0;
   let tl = gsap.timeline({
     repeat: config.repeat,
     paused: config.paused,
@@ -54,7 +55,8 @@ export default function horizontalLoop(items, config) {
     startX +
     items[length - 1].offsetWidth *
     gsap.getProperty(items[length - 1], "scaleX") +
-    (parseFloat(config.paddingRight) || 0);
+    (parseFloat(config.paddingRight) || 0)
+    +loopGap;
   for (i = 0; i < length; i++) {
     item = items[i];
     curX = (xPercents[i] / 100) * widths[i];

@@ -35,10 +35,7 @@ export default function Footer() {
                 <div className="grow flex flex-col w-1/4 h-full gap-4">
                     <div className="flex flex-col gap-1">
                         <h2 className="text-2xl">{t("newsletter")}</h2>
-                        <p className="text-sm">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas sed quod dolore optio tempore illum labore aut suscipit repellat ipsam?
-
-                        </p>
+                        <p className="text-sm">{t("newsletter info")}</p>
                     </div>
                     <div className="relative w-full h-fit border border-zinc-500 rounded-sm">
                         <input className="w-full h-10 px-4" type="email" placeholder={t("enter your email")} />
