@@ -5,18 +5,20 @@ export default function Item(
 ) {
     return (
         <div className="w-full h-full rounded-sm overflow-hidden border border-zinc-200 bg-zinc-100 box-border">
-            <div className="group relative w-full h-9/12 overflow-hidden">
+            <div className="group relative w-full h-8/12 lg:h-9/12 overflow-hidden">
                 <img src={ image_1 } alt="" className="absolute z-20 w-full h-full object-cover object-top hover:opacity-0 transition-all duration-200" />
                 <img src={ image_2 } alt="" className="absolute top-0 z-10 w-full h-full object-cover object-top group-hover:scale-110 transition-all duration-300" />
             </div>
-            <div className="flex flex-col w-full h-3/12 p-2">
-                <h2 className="text-xl">{ heading }</h2>
-                <p className="-my-1 text-sm text-zinc-700">{ subheading }</p>
-                <p className="my-auto text-lg font-semibold">{ formatCurrency(price) }</p>
-                <div className="flex w-full h-fit gap-1">
-                    <div className="size-3 bg-black"></div>
-                    <div className="size-3 bg-gray-500"></div>
-                    <div className="size-3 bg-zinc-50 border border-zinc-400"></div>
+            <div className="flex flex-col w-full h-4/12 lg:h-3/12 p-1 lg:p-4">
+                <h2 className="text-base lg:text-2xl">{ heading }</h2>
+                <p className="-my-1 text-xs lg:text-base text-zinc-700">{ subheading }</p>
+                <div className="flex items-center lg:items-center justify-between w-full mt-auto lg:mt-auto">
+                    <p className="text-base lg:text-2xl font-semibold">{ formatCurrency(price) }</p>
+                    <div className="flex w-fit h-fit gap-1">
+                        <div className="size-3 lg:size-5 bg-black"></div>
+                        <div className="size-3 lg:size-5 bg-gray-500"></div>
+                        <div className="size-3 lg:size-5 bg-zinc-50 border border-zinc-400"></div>
+                    </div>
                 </div>
             </div>
         </div>

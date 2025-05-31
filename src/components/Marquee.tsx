@@ -73,7 +73,7 @@ export function PictureMarquee({ data }:{ data: data[] }) {
         <div ref={pictureMarqueeRef} className="picture-marquee-wrapper flex w-full h-full gap-2 overflow-hidden">
             {
                 data.map((e,i) => (
-                    <div key={i} className="picture-marquee-item flex items-center justify-center w-1/2 min-w-1/3 h-full bg-white rounded-sm border border-zinc-200 overflow-hidden">
+                    <div key={i} className="picture-marquee-item flex items-center justify-center w-1/2 min-w-1/2 lg:min-w-1/3 h-full bg-white rounded-sm border border-zinc-200 overflow-hidden">
                         <img className="object-contain w-full h-full" src={e.image} alt={e.name} />
                     </div>
                 ))

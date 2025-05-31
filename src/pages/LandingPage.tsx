@@ -41,7 +41,7 @@ export default function Landing() {
         { 
             image_1: image1_1,
             image_2: image1_2,
-            heading: "Assassins Hooded Cardigan",
+            heading: "Hooded Cardigan",
             subheading: "KILLSTAR",
             price: 100
         },
@@ -110,8 +110,8 @@ export default function Landing() {
     return(
         <ScrollSmootherWrapper>
             <div className="flex flex-col items-center justify-center w-full h-auto gap-0 bg-[#f7f7f7] font-display">
-                <div className="w-8/12 h-screen">
-                    <div className="w-full h-3/12">
+                <div className="w-full lg:w-8/12 h-screen">
+                    <div className="w-full h-3/12 ">
                         <Navbar />
                     </div>
                     <div className="flex flex-col w-full h-9/12 py-4 gap-4">
@@ -124,15 +124,15 @@ export default function Landing() {
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col w-8/12 h-screen gap-2">
-                    <div className="flex flex-col w-full h-8/12 gap-4">
+                <div className="flex flex-col w-full lg:w-8/12 h-screen gap-0 lg:gap-2">
+                    <div className="flex flex-col w-full h-8/12 gap-0 lg:gap-4 p-2">
                         <div className="flex items-center justify-between h-2/12">
-                            <h1 className="text-4xl">Killstar</h1>
-                            <a href="#" className="flex items-center justify-center text-2xl">
+                            <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold">Killstar</h1>
+                            <a href="#" className="flex items-center justify-center text-2xl md:text-3xl lg:text-2xl">
                                 {t("browse")} <IconCaretRightFilled size={30} stroke={1.5} /> 
                             </a>
                         </div>
-                        <div className="grid grid-cols-4 w-full h-10/12 gap-2">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full h-10/12 gap-2">
                             {
                                 data.map((e,i) => (
                                     <Item key={i} image_1={e.image_1} image_2={e.image_2} heading={e.heading} subheading={e.subheading} price={e.price} />
@@ -140,25 +140,25 @@ export default function Landing() {
                             }
                         </div>
                     </div>
-                    <div className="flex w-full h-4/12 py-8">
-                        <div className="flex flex-col items-center justify-center w-4/12 h-full p-4">
-                            <h1 className="text-2xl font-semibold">{t("browse by brand")}</h1>
+                    <div className="flex flex-col lg:flex-row w-full h-4/12 pt-8 lg:pt-0 py-0 lg:py-8">
+                        <div className="flex flex-col items-center justify-center w-full lg:w-4/12 h-4/12 lg:h-full p-2 lg:p-4">
+                            <h1 className="text-2xl md:text-3xl font-semibold">{t("browse by brand")}</h1>
                             <p className="text-base text-center">{t("brandtext")}</p>
                         </div>
-                        <div className="w-8/12 h-full">
+                        <div className="w-full lg:w-8/12 h-8/12 lg:h-full">
                             <Carousel />
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col w-8/12 h-screen gap-4">
-                    <div className="flex flex-col w-full h-8/12 gap-4">
+                <div className="flex flex-col w-full lg:w-8/12 h-screen gap-4 p-2">
+                    <div className="flex flex-col w-full h-8/12 gap-0 lg:gap-4">
                         <div className="flex items-center justify-between h-2/12">
-                            <h1 className="text-4xl">CEST NOUS</h1>
-                            <a href="#" className="flex items-center justify-center text-2xl">
+                            <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold">CEST NOUS</h1>
+                            <a href="#" className="flex items-center justify-center text-2xl md:text-3xl lg:text-2xl">
                                 {t("browse")} <IconCaretRightFilled size={30} stroke={1.5} /> 
                             </a>
                         </div>
-                        <div className="grid grid-cols-4 w-full h-10/12 gap-2">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 w-full h-10/12 gap-2">
                             {
                                 data_2.map((e,i) => (
                                     <Item key={i} image_1={e.image_1} image_2={e.image_2} heading={e.heading} subheading={e.subheading} price={e.price} />
@@ -168,15 +168,15 @@ export default function Landing() {
                     </div>
                     <div className="flex flex-col w-full h-4/12 mt-4 py-6 gap-6">
                         <div className="flex items-center justify-between h-2/12">
-                            <h1 className="text-4xl">{t("official")}</h1>
-                            <a href="#" className="flex items-center justify-center text-2xl">
+                            <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold">{t("official")}</h1>
+                            <a href="#" className="flex items-center justify-center text-2xl md:text-3xl lg:text-2xl">
                                 {t("browse")} <IconCaretRightFilled size={30} stroke={1.5} /> 
                             </a>
                         </div>
                         <PictureMarquee data={data_3} />
                     </div>
                 </div>
-                <div className="flex w-8/12 h-[35dvh]">
+                <div className="flex w-full lg:w-8/12 h-fit lg:h-[35dvh] pt-10 lg:pt-0">
                     <Footer />
                 </div>
             </div>

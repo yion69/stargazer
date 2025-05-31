@@ -66,9 +66,6 @@ export default function Carousel() {
         };
     },[])
     
-
-
-    
     const data = [
         {
             brand_img: brand_1,
@@ -93,23 +90,23 @@ export default function Carousel() {
         },
     ]
     return(
-        <div ref={ carouselRef } className="carousel overflow-hidden w-full h-full flex items-center">
+        <div ref={ carouselRef } className="carousel overflow-x-scroll w-full h-full flex items-center scrollbar-hide">
             <div className="inner-carousel flex flex-nowrap w-full h-full gap-4">
                 {
                     data.map((e, i) => (
                         <div key={i} className="carousel-item w-full h-full flex-shrink-0 flex items-center justify-center bg-white rounded-md border border-zinc-200 overflow-hidden">
-                            <div className={clsx("flex flex-col items-center justify-center w-4/12 h-full p-4 ", `bg-[${e.background}]`)}>
+                            <div className={clsx("hidden md:flex lg:flex flex-col items-center justify-center w-4/12 h-full p-4 ", `bg-[${e.background}]`)}>
                                 <img src={ e.brand_img } alt="brand" />
                             </div>
-                            <div className="grid grid-cols-3 w-8/12 h-full bg-zinc-100">
-                                <div>
-                                    <img src={ e.image_1 } alt="" />
+                            <div className="grid grid-cols-3 w-full lg:w-8/12 h-full bg-zinc-100">
+                                <div className="h-full">
+                                    <img className="h-full" src={ e.image_1 } alt="" />
                                 </div>
-                                <div>
-                                    <img src={ e.image_2 } alt="" />
+                                <div className="h-full">
+                                    <img className="h-full" src={ e.image_2 } alt="" />
                                 </div>
-                                <div>
-                                    <img src={ e.image_3 } alt="" />
+                                <div className="h-full">
+                                    <img className="h-full" src={ e.image_3 } alt="" />
                                 </div>
                             </div>
                         </div>
