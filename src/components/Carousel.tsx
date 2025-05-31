@@ -99,19 +99,19 @@ export default function Carousel() {
                                 <img src={ e.brand_img } alt="brand" />
                             </div>
                             <div className="grid grid-cols-3 w-full lg:w-8/12 h-full bg-zinc-100">
-                                <div className="h-full">
-                                    <img className="h-full" src={ e.image_1 } alt="" />
+                                <div className="h-full w-full">
+                                    <img className="h-full w-full" src={ e.image_1 } alt="" />
                                 </div>
-                                <div className="h-full">
-                                    <img className="h-full" src={ e.image_2 } alt="" />
+                                <div className="h-full w-full">
+                                    <img className="h-full w-full" src={ e.image_2 } alt="" />
                                 </div>
-                                <div className="h-full">
-                                    <img className="h-full" src={ e.image_3 } alt="" />
+                                <div className="h-full w-full">
+                                    <img className="h-full w-full" src={ e.image_3 } alt="" />
                                 </div>
                             </div>
                         </div>
                     ))
-                }
+                } 
             </div>
         </div>
     )
