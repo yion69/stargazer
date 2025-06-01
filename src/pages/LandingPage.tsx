@@ -42,6 +42,7 @@ interface LandingPageProps {
 export default function Landing({ data_1, data_2, data_3, data_4 }:LandingPageProps) {
 
     const {t} = useTranslation();
+    
     return(
         <ScrollSmootherWrapper>
             <div className="flex flex-col items-center justify-center w-full h-auto gap-0 bg-[#f7f7f7] font-display">
@@ -59,7 +60,7 @@ export default function Landing({ data_1, data_2, data_3, data_4 }:LandingPagePr
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col w-full lg:w-8/12 h-screen gap-0 lg:gap-2">
+                <div className="flex flex-col w-full lg:w-8/12 h-screen max-h-[110dvh] gap-0 lg:gap-2">
                     <div className="flex flex-col w-full h-8/12 gap-0 lg:gap-4 p-2">
                         <div className="flex items-center justify-between h-2/12">
                             <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold">Killstar</h1>
@@ -85,7 +86,7 @@ export default function Landing({ data_1, data_2, data_3, data_4 }:LandingPagePr
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col w-full lg:w-8/12 h-screen gap-4 p-2">
+                <div className="flex flex-col w-full lg:w-8/12 h-screen max-h-[110dvh] gap-4 p-2">
                     <div className="flex flex-col w-full h-8/12 gap-0 lg:gap-4">
                         <div className="flex items-center justify-between h-2/12">
                             <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold">CEST NOUS</h1>
@@ -101,7 +102,7 @@ export default function Landing({ data_1, data_2, data_3, data_4 }:LandingPagePr
                             }
                         </div>
                     </div>
-                    <div className="flex flex-col w-full h-4/12 mt-4 py-6 gap-6">
+                    <div className="flex flex-col w-full h-4/12 lg:mt-4 py-6 gap-6">
                         <div className="flex items-center justify-between h-2/12">
                             <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold">{t("official")}</h1>
                             <a href="#" className="flex items-center justify-center text-2xl md:text-3xl lg:text-2xl">

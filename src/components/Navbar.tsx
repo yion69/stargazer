@@ -22,7 +22,9 @@ export default function Navbar() {
         <nav className="flex flex-col justify-between w-full h-full py-4 font-display">
             <div className="flex justify-end w-full h-fit px-2 lg:px-0">
                 <p className="flex items-center justify-center w-24 gap-2 text-xl">
-                    {t("currency")} | <button type="button" onClick={handleLangChange}>{ lang }</button>
+                    <button type="button" onClick={handleLangChange}>
+                         {t("currency")} | { lang } 
+                    </button>
                 </p>
             </div>
             <div className="grid grid-cols-2 lg:grid-cols-3 items-end w-full gap-2 md:gap-8 px-4 lg:px-0">

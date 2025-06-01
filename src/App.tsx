@@ -39,7 +39,7 @@ function App() {
     brand_2_2: '2.2_gsrm9w',
     brand_2_3: '2.3_x4ozur',
     brand_3: '33_ctxpkh',
-    brand_3_1: '2.3_x4ozur',
+    brand_3_1: '3.1_r7xevw',
     brand_3_2: '3.2_mbr82p',
     brand_3_3: '3.3_vutrue',
   };

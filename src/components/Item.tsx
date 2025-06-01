@@ -9,11 +9,9 @@ export default function Item(
             <div className="group relative w-full h-8/12 lg:h-9/12 overflow-hidden">
                 <CloudinaryImage image_id={image_1} className="absolute z-20 w-full h-full object-cover object-top hover:opacity-0 transition-all duration-200" />
                 <CloudinaryImage image_id={image_2} className="absolute top-0 z-10 w-full h-full object-cover object-top group-hover:scale-110 transition-all duration-300" />
-                {/* <img src={ image_1 } alt="" className="absolute z-20 w-full h-full object-cover object-top hover:opacity-0 transition-all duration-200" /> */}
-                {/* <img src={ image_2 } alt="" className="absolute top-0 z-10 w-full h-full object-cover object-top group-hover:scale-110 transition-all duration-300" /> */}
             </div>
             <div className="flex flex-col w-full h-4/12 lg:h-3/12 p-1 lg:p-4">
-                <h2 className="text-base lg:text-2xl">{ heading }</h2>
+                <h2 className="text-base lg:text-2xl truncate">{ heading }</h2>
                 <p className="-my-1 text-xs lg:text-base text-zinc-700">{ subheading }</p>
                 <div className="flex items-center lg:items-center justify-between w-full mt-auto lg:mt-auto">
                     <p className="text-base lg:text-2xl font-semibold">{ formatCurrency(price) }</p>
