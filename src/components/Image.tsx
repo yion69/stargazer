@@ -12,7 +12,7 @@ export default function CloudinaryImage({ image_id, className }: { image_id: str
         .format('auto')
         .quality('auto')
 
-    const handleImageLoadEnd = () => { setIsLoading(prev => prev = true) };
+    const handleImageLoadEnd = () => { setIsLoading(true) };
 
     useEffect(() => {
 
