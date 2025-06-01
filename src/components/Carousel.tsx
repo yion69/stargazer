@@ -1,24 +1,11 @@
 import gsap from "gsap"
+import clsx from "clsx";
 import { ScrollTrigger } from "gsap/all";
 import { useEffect, useRef } from "react";
+import type { DATA_CAROUSEL_TYPE } from "../pages/LandingPage";
+import CloudinaryImage from "./Image";
 
-import brand_1 from "../../public/brand/1.png"
-import brand_1_1 from "../../public/brand/1.1.png"
-import brand_1_2 from "../../public/brand/1.2.png"
-import brand_1_3 from "../../public/brand/1.3.png"
-
-import brand_2 from "../../public/brand/33.png"
-import brand_2_1 from "../../public/brand/2.1.png"
-import brand_2_2 from "../../public/brand/2.2.png"
-import brand_2_3 from "../../public/brand/2.3.png"
-
-import brand_3 from "../../public/brand/3.png"
-import brand_3_1 from "../../public/brand/3.1.png"
-import brand_3_2 from "../../public/brand/3.2.png"
-import brand_3_3 from "../../public/brand/3.3.png"
-import clsx from "clsx";
-
-export default function Carousel() {
+export default function Carousel({ data }:{ data:DATA_CAROUSEL_TYPE[] }) {
     
     const carouselRef = useRef<HTMLDivElement>(null);
 
@@ -65,30 +52,7 @@ export default function Carousel() {
             el.removeEventListener("wheel", onWheel);
         };
     },[])
-    
-    const data = [
-        {
-            brand_img: brand_1,
-            image_1: brand_1_1,
-            image_2: brand_1_2,
-            image_3: brand_1_3,
-            background: "transparent",
-        },
-        {
-            brand_img: brand_2,
-            image_1: brand_2_1,
-            image_2: brand_2_2,
-            image_3: brand_2_3,
-            background: '#79787d',
-        },
-        {
-            brand_img: brand_3,
-            image_1: brand_3_1,
-            image_2: brand_3_2,
-            image_3: brand_3_3,
-            background: '#c9c8d1',
-        },
-    ]
+
     return(
         <div ref={ carouselRef } className="carousel overflow-x-scroll w-full h-full flex items-center scrollbar-hide">
             <div className="inner-carousel flex flex-nowrap w-full h-full gap-4">
@@ -96,17 +60,17 @@ export default function Carousel() {
                     data.map((e, i) => (
                         <div key={i} className="carousel-item w-full h-full flex-shrink-0 flex items-center justify-center bg-white rounded-md border border-zinc-200 overflow-hidden">
                             <div className={clsx("hidden md:flex lg:flex flex-col items-center justify-center w-4/12 h-full p-4 ", `bg-[${e.background}]`)}>
-                                <img src={ e.brand_img } alt="brand" />
+                                <CloudinaryImage image_id={e.brand_img} />
                             </div>
                             <div className="grid grid-cols-3 w-full lg:w-8/12 h-full bg-zinc-100">
                                 <div className="h-full w-full">
-                                    <img className="h-full w-full" src={ e.image_1 } alt="" />
+                                    <CloudinaryImage image_id={e.image_1} className="h-full w-full" />
                                 </div>
                                 <div className="h-full w-full">
-                                    <img className="h-full w-full" src={ e.image_2 } alt="" />
+                                    <CloudinaryImage image_id={e.image_2} className="h-full w-full" />
                                 </div>
                                 <div className="h-full w-full">
-                                    <img className="h-full w-full" src={ e.image_3 } alt="" />
+                                    <CloudinaryImage image_id={e.image_3} className="h-full w-full" />
                                 </div>
                             </div>
                         </div>

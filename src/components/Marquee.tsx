@@ -2,6 +2,7 @@ import gsap from "gsap"
 import { Observer } from "gsap/Observer";
 import horizontalLoop from "../utils/HeplerFunction";
 import { useEffect, useRef } from "react";
+import CloudinaryImage from "./Image";
 
 export function Marquee({ direction }:{ direction: "left" | "right" }) {
 
@@ -74,7 +75,7 @@ export function PictureMarquee({ data }:{ data: data[] }) {
             {
                 data.map((e,i) => (
                     <div key={i} className="picture-marquee-item flex items-center justify-center w-1/2 min-w-1/2 lg:min-w-1/3 h-full bg-white rounded-sm border border-zinc-200 overflow-hidden">
-                        <img className="object-contain w-full h-full" src={e.image} alt={e.name} />
+                        <CloudinaryImage image_id={e.image} className="object-contain w-full h-full" />
                     </div>
                 ))
             }

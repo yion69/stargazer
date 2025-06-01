@@ -1,4 +1,5 @@
 import { formatCurrency } from "../utils/FormatCurrency";
+import CloudinaryImage from "./Image";
 
 export default function Item(
     { image_1, image_2,  heading, subheading, price }:{ image_1: string, image_2: string, heading: string, subheading: string, price: number}
@@ -6,8 +7,10 @@ export default function Item(
     return (
         <div className="w-full h-full rounded-sm overflow-hidden border border-zinc-200 bg-zinc-100 box-border">
             <div className="group relative w-full h-8/12 lg:h-9/12 overflow-hidden">
-                <img src={ image_1 } alt="" className="absolute z-20 w-full h-full object-cover object-top hover:opacity-0 transition-all duration-200" />
-                <img src={ image_2 } alt="" className="absolute top-0 z-10 w-full h-full object-cover object-top group-hover:scale-110 transition-all duration-300" />
+                <CloudinaryImage image_id={image_1} className="absolute z-20 w-full h-full object-cover object-top hover:opacity-0 transition-all duration-200" />
+                <CloudinaryImage image_id={image_2} className="absolute top-0 z-10 w-full h-full object-cover object-top group-hover:scale-110 transition-all duration-300" />
+                {/* <img src={ image_1 } alt="" className="absolute z-20 w-full h-full object-cover object-top hover:opacity-0 transition-all duration-200" /> */}
+                {/* <img src={ image_2 } alt="" className="absolute top-0 z-10 w-full h-full object-cover object-top group-hover:scale-110 transition-all duration-300" /> */}
             </div>
             <div className="flex flex-col w-full h-4/12 lg:h-3/12 p-1 lg:p-4">
                 <h2 className="text-base lg:text-2xl">{ heading }</h2>

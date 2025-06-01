@@ -12,10 +12,10 @@ export default function Footer() {
 
                 <div className="col-span-2 lg:col-span-1 flex flex-col items-start justify-end w-full md:w-5/12 lg:w-2/5 h-full gap-4 lg:gap-2">
                     <p className="text-sm px-2 lg:px-0 lg:pe-4">{t("stargazer")}</p>
-                    <div className="flex flex-col w-full h-fit mt-0 px-2 lg:mt-6 gap-0 lg:gap-1">
+                    <div className="flex flex-col w-full h-fit mt-0 px-2 lg:px-0 lg:mt-6 gap-0 lg:gap-1">
                         <h2 className="lg:px-0 text-2xl">{t("socials")}</h2>
                         <ul className="grid grid-cols-5 md:grid-cols-2 lg:grid-cols-2 w-full lg:w-1/2 text-sm">
-                            <li className="flex items-center justify-center md:justify-start lg:justify-start"><a href="#">Facebook</a></li>
+                            <li className="flex items-center justify-start md:justify-start lg:justify-start"><a href="#">Facebook</a></li>
                             <li className="flex items-center justify-center md:justify-start lg:justify-start"><a href="#">Instagram</a></li>
                             <li className="flex items-center justify-center md:justify-start lg:justify-start"><a href="#">Youtube</a></li>
                             <li className="flex items-center justify-center md:justify-start lg:justify-start"><a href="#">Twitter</a></li>
