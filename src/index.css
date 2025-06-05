@@ -9,11 +9,18 @@
   src: url("/fonts/ROMANTIC.TTF");
 }
 
+@font-face {
+  font-family: "UnicaOne";
+  src: url("/fonts/UnicaOne.ttf");
+}
+
 @theme {
   --font-display: "Unica One", sans-serif;
   --font-marquee: "VT323", monospace;
   --font-megrim: "Megrim", monospace;
   --font-romantic: "Romantic", sans-serif;
+
+  --color-background: #f7f7f7;
 }
 
 .vt323-regular {

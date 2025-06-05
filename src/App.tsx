@@ -1,6 +1,11 @@
 import './App.css'
 
 import { lazy, Suspense } from 'react';
+import { BrowserRouter, Route, Router, Routes, UNSAFE_RemixErrorBoundary } from 'react-router';
+import StorePage from './pages/StorePage';
+import Navbar from './components/Navbar';
+import ScrollSmootherWrapper from './utils/ScrollSmoother';
+
 
 function App() {
   
@@ -137,22 +142,39 @@ function App() {
         background: '#c9c8d1',
     },
   ]
-  const LandingPage = lazy(() => import('./pages/LandingPage'));
+  const LandingPage = lazy(() =>  import('./pages/LandingPage'));
 
   return (
-      <Suspense fallback={
-        <div className='flex items-center justify-center h-screen w-screen'>
-          <h1 className='font-romantic text-4xl md:text-6xl lg:text-8xl'>
-            Loading...
-          </h1>
-        </div>
-      }>
-        <LandingPage
-          data_1={data}
-          data_2={data_2}
-          data_3={data_3}
-          data_4={data_4} />
-    </Suspense>
+    <ScrollSmootherWrapper>
+        <BrowserRouter>
+          <Suspense fallback={
+            <div className='flex items-center justify-center h-screen w-screen'>
+              <h1 className='font-romantic text-4xl md:text-6xl lg:text-8xl'>
+                Loading...
+              </h1>
+            </div>
+          }>
+
+          <div className='flex items-center justify-center w-full'>
+            <Navbar />
+          </div>
+
+          <div className='flex items-center justify-center w-8/12 h-auto mx-auto'>
+            <Routes>
+              <Route path='/' element={
+                <LandingPage
+                  data_1={data}
+                  data_2={data_2}
+                  data_3={data_3}
+                  data_4={data_4} />
+              } />
+              <Route path='/store' Component={ StorePage } />
+            </Routes>
+          </div>
+            
+        </Suspense>
+        </BrowserRouter>
+      </ScrollSmootherWrapper>
   )
 }
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import ScrambleText from "../utils/ScrambledText";
 import clsx from "clsx";
+import { Link } from "react-router";
 
 export default function Navbar() {
 
@@ -19,7 +20,7 @@ export default function Navbar() {
     }
     
     return (
-        <nav className="flex flex-col justify-between w-full h-full py-4 font-display">
+        <nav className="flex flex-col justify-between w-8/12 h-full min-h-40 py-4 font-display">
             <div className="flex justify-end w-full h-fit px-2 lg:px-0">
                 <p className="flex items-center justify-center w-24 gap-2 text-xl">
                     <button type="button" onClick={handleLangChange}>
@@ -31,14 +32,14 @@ export default function Navbar() {
 
                 <ul className={clsx("order-2 lg:order-1 grid grid-cols-3 w-full text-base md:text-2xl", lang == "EN" ? "lg:text-2xl" : "text-xs lg:text-base")}>
                     <li className="hover:font-bold hover:scale-105 transition-all duration-200">
-                        <a href="#" className={clsx("flex items-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "justify-start" : "justify-start")}>
+                        <Link to="/" className={clsx("flex items-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "justify-start" : "justify-start")}>
                             <ScrambleText>{t("home")}</ScrambleText>
-                        </a>
+                        </Link>
                     </li>
                     <li className="hover:font-bold hover:scale-105 transition-all duration-200">
-                        <a href="#" className={clsx("flex items-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "justify-start" : "justify-start")}>
+                        <Link to="/store" className={clsx("flex items-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "justify-start" : "justify-start")}>
                             <ScrambleText>{t("shop")}</ScrambleText>
-                        </a>
+                        </Link>
                     </li>
                     <li className="hover:font-bold hover:scale-105 transition-all duration-200">
                         <a href="#" className={clsx("flex items-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "justify-start" : "justify-center")}>

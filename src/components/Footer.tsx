@@ -6,7 +6,7 @@ export default function Footer() {
     const {t} = useTranslation();
     
     return (
-        <div className="flex flex-col justify-end w-full h-full px-2 lg:px-0 gap-2 lg:gap-4 font-display">
+        <div className="flex flex-col justify-end w-full h-full px-2 lg:px-0 py-4 gap-2 lg:gap-4 font-display">
             <h1 className="px-2 lg:px-0 text-4xl">Stargazer</h1>
             <div className="grid grid-cols-2 md:flex md:items-start lg:flex lg:items-start w-full h-fit gap-6">
 

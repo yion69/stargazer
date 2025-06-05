@@ -1,8 +1,22 @@
 import { formatCurrency } from "../utils/FormatCurrency";
 import CloudinaryImage from "./Image";
 
+interface ItemType {
+    image_1: string, 
+    image_2: string, 
+    heading: string, 
+    subheading: string, 
+    price: number
+}
+
 export default function Item(
-    { image_1, image_2,  heading, subheading, price }:{ image_1: string, image_2: string, heading: string, subheading: string, price: number}
+    { 
+        image_1 = "item_placeholder_1_kce4ck",
+        image_2 = "item_placeholder_2_zhzrua",
+        heading = "Default Heading",
+        subheading = "Default Subheading",
+        price = 0,
+    }:ItemType
 ) {
     return (
         <div className="w-full h-full rounded-sm overflow-hidden border border-zinc-200 bg-zinc-100 box-border">

@@ -1,7 +1,5 @@
-import Navbar from "../components/Navbar";
 import { Marquee, PictureMarquee } from "../components/Marquee";
 import Item from "../components/Item";
-import ScrollSmootherWrapper from "../utils/ScrollSmoother";
 import Carousel from "../components/Carousel";
 import Footer from "../components/Footer";
 
@@ -44,12 +42,9 @@ export default function Landing({ data_1, data_2, data_3, data_4 }:LandingPagePr
     const {t} = useTranslation();
     
     return(
-        <ScrollSmootherWrapper>
-            <div className="flex flex-col items-center justify-center w-full h-auto gap-0 bg-[#f7f7f7] font-display">
-                <div className="w-full lg:w-8/12 h-screen">
-                    <div className="w-full h-3/12 ">
-                        <Navbar />
-                    </div>
+        // <ScrollSmootherWrapper>
+            <div className="flex flex-col items-center justify-center w-full h-auto gap-0">
+                <div className="w-full h-auto">
                     <div className="flex flex-col w-full h-9/12 py-4 gap-4">
                         <div className="w-full h-10/12">
                             <CloudinaryImage image_id="placeholder_bdgc7r" className="w-full h-full object-cover" />
@@ -60,7 +55,7 @@ export default function Landing({ data_1, data_2, data_3, data_4 }:LandingPagePr
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col w-full lg:w-8/12 h-screen max-h-[110dvh] gap-0 lg:gap-2">
+                <div className="flex flex-col w-full h-screen max-h-[110dvh] gap-0 lg:gap-2">
                     <div className="flex flex-col w-full h-8/12 gap-0 lg:gap-4 p-2">
                         <div className="flex items-center justify-between h-2/12">
                             <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold">Killstar</h1>
@@ -81,12 +76,12 @@ export default function Landing({ data_1, data_2, data_3, data_4 }:LandingPagePr
                             <h1 className="text-2xl md:text-3xl font-semibold">{t("browse by brand")}</h1>
                             <p className="text-base text-center">{t("brandtext")}</p>
                         </div>
-                        <div className="w-full lg:w-8/12 h-8/12 lg:h-full">
+                        <div className="w-full h-8/12 lg:h-full">
                             <Carousel data={ data_4 } />
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-col w-full lg:w-8/12 h-screen max-h-[110dvh] gap-4 p-2">
+                <div className="flex flex-col w-full h-screen max-h-[110dvh] gap-4 p-2">
                     <div className="flex flex-col w-full h-8/12 gap-0 lg:gap-4">
                         <div className="flex items-center justify-between h-2/12">
                             <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold">CEST NOUS</h1>
@@ -112,10 +107,10 @@ export default function Landing({ data_1, data_2, data_3, data_4 }:LandingPagePr
                         <PictureMarquee data={data_3} />
                     </div>
                 </div>
-                <div className="flex w-full lg:w-8/12 h-fit lg:h-[35dvh] pt-10 lg:pt-0">
+                <div className="flex w-full h-fit lg:h-[35dvh] pt-10 lg:pt-0">
                     <Footer />
                 </div>
             </div>
-        </ScrollSmootherWrapper>
+        // </ScrollSmootherWrapper>
     )
 }
