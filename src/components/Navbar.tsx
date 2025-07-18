@@ -20,7 +20,7 @@ export default function Navbar() {
     }
     
     return (
-        <nav className="flex flex-col justify-between w-8/12 h-full min-h-40 py-4 font-display">
+        <nav className="flex flex-col justify-between w-full md:w-10-12 lg:w-8/12 h-full min-h-40 py-4 font-display">
             <div className="flex justify-end w-full h-fit px-2 lg:px-0">
                 <p className="flex items-center justify-center w-24 gap-2 text-xl">
                     <button type="button" onClick={handleLangChange}>
@@ -37,7 +37,7 @@ export default function Navbar() {
                         </Link>
                     </li>
                     <li className="hover:font-bold hover:scale-105 transition-all duration-200">
-                        <Link to="/store" className={clsx("flex items-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "justify-start" : "justify-start")}>
+                        <Link to="/store/all" className={clsx("flex items-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "justify-start" : "justify-start")}>
                             <ScrambleText>{t("shop")}</ScrambleText>
                         </Link>
                     </li>
@@ -59,9 +59,9 @@ export default function Navbar() {
                     <a href="#" className={clsx("flex items-center justify-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "lg:justify-end" : "lg:justify-center")}>
                         <ScrambleText>{t("search")}</ScrambleText>
                     </a>
-                    <a href="#" className={clsx("flex items-center justify-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "lg:justify-end" : "text-[0.60rem] scale-125 lg:justify-center")}>
+                    <Link to="/account" className={clsx("flex items-center justify-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "lg:justify-end" : "text-[0.60rem] scale-125 lg:justify-center")}>
                         <ScrambleText>{t("account")}</ScrambleText>
-                    </a>
+                    </Link>
                 </div>
 
             </div>

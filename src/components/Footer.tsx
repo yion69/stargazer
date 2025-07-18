@@ -1,4 +1,4 @@
-import { IconCopyright, IconMailForward, IconMapPin } from "@tabler/icons-react";
+// import { IconCopyright, IconMailForward, IconMapPin } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 
 export default function Footer() {
@@ -6,7 +6,7 @@ export default function Footer() {
     const {t} = useTranslation();
     
     return (
-        <div className="flex flex-col justify-end w-full h-full px-2 lg:px-0 py-4 gap-2 lg:gap-4 font-display">
+        <div className="flex flex-col justify-end w-full lg:w-8/12 h-full px-2 lg:px-0 py-4 gap-2 lg:gap-4 font-display">
             <h1 className="px-2 lg:px-0 text-4xl">Stargazer</h1>
             <div className="grid grid-cols-2 md:flex md:items-start lg:flex lg:items-start w-full h-fit gap-6">
 
@@ -53,11 +53,11 @@ export default function Footer() {
                     <div className="relative w-full h-fit border border-zinc-500 rounded-sm">
                         <input className="w-full h-10 px-4" type="email" placeholder={t("enter your email")} />
                         <button type="button" title="mail" className="absolute right-4 top-2 w-fit h-fit">
-                            <IconMailForward stroke={1}/>
+                            {/* <IconMailForward stroke={1}/> */}
                         </button>
                     </div>
                     <div className="flex items-center h-fit w-full px-0 gap-1">
-                        <IconMapPin size={16} stroke={2} />
+                        {/* <IconMapPin size={16} stroke={2} /> */}
                         <p className="text-xs lg:text-sm">154/5 Ratchamanka Rd, Si Phum, Mueang Chiang Mai District</p>
                     </div>
                 </div>
@@ -66,7 +66,9 @@ export default function Footer() {
             <div className="cols-span-2 lg:col-span-1 flex flex-col items-center w-full h-2/12 mt-4 lg:mt-0 gap-4">
                 <div className="w-full h-[1px] bg-zinc-900"></div>
                 <div className="flex flex-col md:flex-row lg:flex-row items-center justify-between w-full h-fit text-xs">
-                    <p className="flex items-center justify-center gap-1"><IconCopyright size={14} /> 2025 House Of Blanks. All Rights Reserved</p>
+                    <p className="flex items-center justify-center gap-1">
+                        {/* <IconCopyright size={14} />  */}
+                        2025 House Of Blanks. All Rights Reserved</p>
                     <div className="flex gap-4">
                         <a href="">{t("terms")}</a>
                         <a href="">{t("privacy")}</a>

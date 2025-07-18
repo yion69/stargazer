@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { formatCurrency } from "../utils/FormatCurrency";
 import CloudinaryImage from "./Image";
 
@@ -6,7 +7,9 @@ interface ItemType {
     image_2: string, 
     heading: string, 
     subheading: string, 
-    price: number
+    price: number,
+    func?: (value?: string | number | undefined) => void,
+    className?: string
 }
 
 export default function Item(
@@ -16,10 +19,12 @@ export default function Item(
         heading = "Default Heading",
         subheading = "Default Subheading",
         price = 0,
+        func,
+        className
     }:ItemType
 ) {
     return (
-        <div className="w-full h-full rounded-sm overflow-hidden border border-zinc-200 bg-zinc-100 box-border">
+        <div onClick={() => func && func()} className={clsx(className, "w-full rounded-sm overflow-hidden border border-zinc-200 bg-zinc-100 box-border")}>
             <div className="group relative w-full h-8/12 lg:h-9/12 overflow-hidden">
                 <CloudinaryImage image_id={image_1} className="absolute z-20 w-full h-full object-cover object-top hover:opacity-0 transition-all duration-200" />
                 <CloudinaryImage image_id={image_2} className="absolute top-0 z-10 w-full h-full object-cover object-top group-hover:scale-110 transition-all duration-300" />

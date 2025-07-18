@@ -1,4 +1,4 @@
-import { IconChevronDown, IconChevronUp } from "@tabler/icons-react";
+// import { IconChevronDown, IconChevronUp } from "@tabler/icons-react";
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react"
 
@@ -12,6 +12,8 @@ interface DropdownProps<T> {
     options: Option<T>[],
     className?: string
 }
+
+export type SortType = "relevance" | "lowtohigh" | "hightolow";
 
 export default function Dropdown<T>({ value, handleChange, options, className }:DropdownProps<T>) {
     
@@ -46,8 +48,10 @@ export default function Dropdown<T>({ value, handleChange, options, className }:
 
                 {
                     isOpen ? 
-                        <IconChevronUp stroke={1} size={24} className="transition-all duration-300" /> :
-                        <IconChevronDown stroke={1} size={24} className="transition-all duration-300" /> 
+                        <span className="transition-all duration-300"> ⇡ </span> :
+                        <span className="transition-all duration-300"> ⇣ </span>
+                        // <IconChevronUp stroke={1} size={24} className="transition-all duration-300" /> :
+                        // <IconChevronDown stroke={1} size={24} className="transition-all duration-300" /> 
                 }
             </button>
             {
