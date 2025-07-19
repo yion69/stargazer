@@ -3,8 +3,8 @@ import { formatCurrency } from "../utils/FormatCurrency";
 import CloudinaryImage from "./Image";
 
 interface ItemType {
-    image_1: string, 
-    image_2: string, 
+    image_1?: string, 
+    image_2?: string, 
     heading: string, 
     subheading: string, 
     price: number,

@@ -1,122 +1,103 @@
 import { CircleQuestionMark } from "lucide-react";
-import Button from "../../components/Button";
+import Button, { type ButtonColor, type ButtonSize } from "../../components/Button";
+import TextField, { type TextFieldType } from "../../components/TextField";
+import clsx from "clsx";
 
 export default function DesignShowcase() {
+
+    const Button_Size_Test:ButtonSize[] = [
+        "icon","sm", "md", "lg", "full",
+    ]
+    const Button_Color_Test:ButtonColor[] = [
+        'primary', 'secondary', 'success', 'danger', 'outline'
+    ]
+
+    const TextField_Size_Test = [
+        'max-w-1/4', 'max-w-2/4', 'max-w-3/4', 'max-w-full'
+    ]
+    const TextField_Type_Test:TextFieldType[] = [
+        'text', 'password'
+    ]
+
     return (
-        <div className="h-full w-full flex-col">
-            <div className="flex gap-4 w-full h-auto border">
-                <div className="flex flex-col w-1/2 h-auto p-4 gap-4">
-                    <Button type={"submit"} 
-                            size={"icon"} 
-                            color={"primary"} 
-                            loading={false} 
-                            className={""}>
-                                <CircleQuestionMark />
-                    </Button>
-                    <Button type={"submit"} 
-                            size={"sm"} 
-                            color={"primary"} 
-                            loading={false} 
-                            className={""}>
-                                Button
-                    </Button>
-                    <Button type={"submit"} 
-                            size={"md"} 
-                            color={"primary"} 
-                            loading={false} 
-                            className={""}>
-                                Button
-                    </Button>
-                    <Button type={"submit"} 
-                            size={"lg"} 
-                            color={"primary"} 
-                            loading={false} 
-                            className={""}>
-                                Button
-                    </Button>
-                    <Button type={"submit"} 
-                            size={"full"} 
-                            color={"primary"} 
-                            loading={false} 
-                            className={""}>
-                                Button
-                    </Button>
-                </div>
-                <div className="flex w-1/2 h-auto p-4 gap-4">
-                    <div className="flex flex-col gap-4">
-                        <Button type={"submit"} 
-                                size={"md"} 
+        <div className="h-auto w-full flex flex-col p-4 gap-10">
+            <div className="flex gap-4 w-full h-auto">
+                <div className="flex flex-col w-1/2 h-auto gap-4">
+                {
+                    Button_Size_Test.map((e,i) => (
+                        <Button key={ i }
+                                type="button"
+                                size={ e } 
                                 color={"primary"} 
-                                loading={false} 
-                                className={""}>
-                                    Button
+                                loading={false}>
+                                    { e == 'icon' ? <CircleQuestionMark /> : "Button" }
                         </Button>
-                        <Button type={"submit"} 
-                                size={"md"} 
-                                color={"secondary"} 
-                                loading={false} 
-                                className={""}>
-                                    Button
-                        </Button>
-                        <Button type={"submit"} 
-                                size={"md"} 
-                                color={"success"} 
-                                loading={false} 
-                                className={""}>
-                                    Button
-                        </Button>
-                        <Button type={"submit"} 
-                                size={"md"} 
-                                color={"danger"} 
-                                loading={false} 
-                                className={""}>
-                                    Button
-                        </Button>
-                        <Button type={"submit"} 
-                                size={"md"} 
-                                color={"outline"} 
-                                loading={false} 
-                                className={""}>
-                                    Button
-                        </Button>
+                    ))
+                }
+                </div>
+                <div className="flex w-1/2 h-auto gap-4">
+                    <div className="flex flex-col gap-4">
+                    {
+                        Button_Color_Test.map((e,i) => (
+                            <Button key={ i }
+                                    type={"submit"} 
+                                    size={"md"} 
+                                    color={ e } 
+                                    loading={false} 
+                                    className={""}>
+                                        Button
+                            </Button>
+                        ))
+                    }
                     </div>
                     <div className="grow flex flex-col gap-4">
-                        <Button type={"submit"} 
-                                size={"icon"} 
-                                color={"primary"} 
-                                loading={true} 
-                                className={""}>
-                                    Button
-                        </Button>
-                        <Button type={"submit"} 
-                                size={"sm"} 
-                                color={"secondary"} 
-                                loading={true} 
-                                className={""}>
-                                    Button
-                        </Button>
-                        <Button type={"submit"} 
-                                size={"md"} 
-                                color={"success"} 
-                                loading={true} 
-                                className={""}>
-                                    Button
-                        </Button>
-                        <Button type={"submit"} 
-                                size={"lg"} 
-                                color={"danger"} 
-                                loading={true} 
-                                className={""}>
-                                    Button
-                        </Button>
-                        <Button type={"submit"} 
-                                size={"full"} 
-                                color={"outline"} 
-                                loading={true} 
-                                className={""}>
-                                    Button
-                        </Button>
+                    {
+                        Button_Color_Test.map((e,i) => (
+                            <Button key={ i } 
+                                    type={"submit"} 
+                                    size={ "md" } 
+                                    color={ e } 
+                                    loading={true} 
+                                    className={""}>
+                                        Button
+                            </Button>
+                        ))
+                    }
                     </div>
+                </div>
+            </div>
+            <div className="flex w-full h-auto gap-4">
+                <div className="flex flex-col gap-4 w-1/2 h-auto">
+                {
+                    TextField_Size_Test.map((e,i) => (
+                        <TextField  key={ i }
+                                    type={"text"} 
+                                    title={"input"} 
+                                    placeholder="Input"
+                                    className={ clsx( "font-mono", e) } />
+                    ))
+                }
+                </div>
+                <div className="flex flex-col gap-4 w-1/2 h-auto">
+                {
+                    TextField_Type_Test.map((e,i) => (
+                        <TextField  key={ i }
+                                    type={ e } 
+                                    title={"input"} 
+                                    placeholder={ e } 
+                                    className={ clsx( "font-mono") } />
+                    ))
+                }
+                        <TextField  type={ 'text' } 
+                                    title={"input"} 
+                                    disabled
+                                    placeholder={ "Disabled" } 
+                                    className={ clsx( "font-mono") } />
+                        <TextField  type={ 'password' } 
+                                    title={"input"} 
+                                    disabled
+                                    placeholder={ "Disabled" } 
+                                    className={ clsx( "font-mono") } />
                 </div>
             </div>
         </div>

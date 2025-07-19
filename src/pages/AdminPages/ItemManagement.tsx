@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Item from '../components/Item';
+import Item from '../../components/Item';
 
 // --- Type Definitions ---
 // Re-defining your item schema for clarity and type safety
@@ -87,7 +87,7 @@ const AddItemDashboard: React.FC = () => {
     };
 
     return (
-        <div className="h-full w-full flex items-center justify-center">
+        <div className="h-full w-full flex items-start justify-center">
             <div className="p-8 w-full max-w-md">
                 <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Add New Item</h2>
 
@@ -207,22 +207,22 @@ const AddItemDashboard: React.FC = () => {
                     </button>
                 </form>
             </div>
-            <div className='grow w-full h-full grid grid-cols-2'>
-                <div className='w-full h-full'>
+            <div className='grow w-full h-full grid grid-rows-2'>
+                <div className='flex justify-center items-center w-full h-full'>
                     <Item 
                           
-                          heading={newItem.heading} 
-                          subheading={newItem.subheading} 
-                          price={newItem.price} 
-                          className='!w-[300px] !max-w-[300px] h-[16rem] lg:h-[30rem]' />
+                        heading={newItem.heading}
+                        subheading={newItem.subheading}
+                        price={newItem.price}
+                        className='!w-[300px] !max-w-[300px] h-[16rem] lg:h-[30rem]'/>
                 </div>
-                <div className='w-full h-full'>
+                <div className='flex justify-center items-center w-full h-full'>
                     <Item 
                           
-                          heading={newItem.heading} 
-                          subheading={newItem.subheading} 
-                          price={newItem.price} 
-                          className='!w-[300px] !max-w-[300px] h-[256px]' />
+                        heading={newItem.heading}
+                        subheading={newItem.subheading}
+                        price={newItem.price}
+                        className='!w-[300px] !max-w-[300px] h-[256px] pointer-events-none' />
                 </div>
             </div>
         </div>

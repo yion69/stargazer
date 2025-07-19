@@ -1,26 +1,19 @@
 import clsx from "clsx";
 import { LoaderCircle } from "lucide-react";
-import type { ReactNode } from "react";
+import { forwardRef, type ReactNode } from "react";
 
-export default function Button({
-    type = 'button',
-    size = 'md',
-    color = 'primary',
-    loading = false,
-    children,
-    className,
-    onClickFunc,
-    onSubmitFunc
-}:{
-    type: 'submit' | 'button' | 'reset',
-    size: 'icon' | 'sm' | 'md' | 'lg' | 'full',
-    color: 'primary' | 'secondary' | 'success' | 'danger' | 'outline',
+export type ButtonSize = 'icon' | 'sm' | 'md' | 'lg' | 'full';
+export type ButtonColor = 'primary' | 'secondary' | 'success' | 'danger' | 'outline';
+export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    size: ButtonSize,
+    color: ButtonColor,
     loading?: boolean,
     children?: ReactNode,
-    className?: string,
-    onClickFunc?: <T> (parameter?:T) => void,
-    onSubmitFunc?: <T> (parameter?:T) => void,
-}) {
+    className?: string
+}
+
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+    ({ type = "button", size = "md", color = "primary", loading = false, children, className, ...props }, ref) => {
 
     const buttonSize = () => {
         switch (size) {
@@ -45,10 +38,9 @@ export default function Button({
     }
 
     return (
-        <button type={ type } 
+        <button ref={ ref }
+                type={ type } 
                 disabled = { loading }
-                onClick={ onClickFunc ?? (() => {}) }
-                onSubmit={ onSubmitFunc ?? (() => {}) }
                 className={ clsx(
                     "relative w-fit h-13 px-4 flex items-center justify-center",
                     "text-lg border rounded-xs font-mono cursor-pointer",
@@ -57,7 +49,8 @@ export default function Button({
                     loading && "cursor-not-allowed opacity-80 pointer-events-none",
                     buttonSize(),
                     buttonColor()
-                ) } >
+                ) }
+                { ...props } >
                     
                     {
                         loading &&
@@ -76,4 +69,7 @@ export default function Button({
                     { children }
         </button>
     )
-}
+})
+
+Button.displayName = "Button";
+export default Button;

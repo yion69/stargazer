@@ -16,7 +16,7 @@ const AccountSignIn = lazy(() => import('./pages/AccountPage/SignInPage'));
 const AccountSignUp = lazy(() => import('./pages/AccountPage/SignUpPage'));
 
 const AdminDashboard = lazy(() => import('./pages/AdminPages/Dashboard'))
-const AddItemDashboard = lazy(() => import('./pages/AdminPage'));
+const AddItemDashboard = lazy(() => import('./pages/AdminPages/ItemManagement'));
 const DesignsDashboard = lazy(() => import('./pages/AdminPages/DesignShowcae'))
 
 function App() {
@@ -39,8 +39,8 @@ function App() {
                 <Route path='/store/:id' element={ <ItemPage /> } />
               </Route>
               <Route path='/admin' element={ <AdminDashboard/> } >
-                <Route path='/admin/items' element={ <AddItemDashboard /> } />
-                <Route path='/admin/designs' element={ <DesignsDashboard /> } />
+                <Route path='/admin/items-management' element={ <AddItemDashboard /> } />
+                <Route path='/admin/components' element={ <DesignsDashboard /> } />
               </Route>
               <Route path='/account' element={ <Account /> } >
                 <Route path='/account/signin' element={ <AccountSignIn /> } />
