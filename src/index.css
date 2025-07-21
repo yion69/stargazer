@@ -13,12 +13,17 @@
   font-family: "UnicaOne";
   src: url("/fonts/UnicaOne.ttf");
 }
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter-VariableFont_opsz,wght.ttf");
+}
 
 @theme {
   --font-display: "Unica One", sans-serif;
   --font-marquee: "VT323", monospace;
   --font-megrim: "Megrim", monospace;
   --font-romantic: "Romantic", sans-serif;
+  --font-inter: 'Inter', sans-serif;
 
   --color-background: #f7f7f7;
 }

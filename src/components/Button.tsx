@@ -29,7 +29,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const buttonColor = () => {
         switch (color) {
             case 'primary': return "bg-zinc-50 border-zinc-300 hover:bg-zinc-100"
-            case 'secondary': return "bg-zinc-900 text-zinc-200 hover:bg-zinc-700"
+            case 'secondary': return "bg-zinc-900 border-zinc-800 text-zinc-200 hover:bg-zinc-700"
             case 'success': return "bg-green-400 text-zinc-50 border-green-600 hover:bg-green-500"
             case 'danger': return "bg-rose-600 text-zinc-50 border-rose-700 hover:bg-rose-500"
             case 'outline': return "bg-zinc-50 border-zinc-900"
@@ -43,7 +43,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 disabled = { loading }
                 className={ clsx(
                     "relative w-fit h-13 px-4 flex items-center justify-center",
-                    "text-lg border rounded-xs font-mono cursor-pointer",
+                    "text-base border rounded-xs font-inter cursor-pointer",
                     "transition duration-200 active:scale-90", 
                     className, 
                     loading && "cursor-not-allowed opacity-80 pointer-events-none",

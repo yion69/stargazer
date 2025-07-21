@@ -6,7 +6,7 @@ export type TextFieldType = 'text' | 'password'
 type TextFieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
     title: string;
     type?: TextFieldType;
-    className: string;
+    className?: string;
 }
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
@@ -19,8 +19,9 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 
         return (
             <div className={ clsx( 
-                "relative flex h-12 w-full border rounded-xs cursor-pointer",
-                "has-focus:border-2 has-disabled:border-zinc-400 has-disabled:text-zinc-400 has-disabled:pointer-events-none", 
+                "relative flex h-12 w-fullcursor-pointer",
+                "bg-zinc-50 border border-zinc-300 rounded-xs font-inter text-base",
+                "has-focus:border-2 has-focus:border-zinc-400 has-disabled:border-zinc-400 has-disabled:text-zinc-400 has-disabled:pointer-events-none", 
                 className 
             ) }>
                 

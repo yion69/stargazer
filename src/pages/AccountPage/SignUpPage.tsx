@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import Button from "../../components/Button";
 import { LassoSelectIcon } from "lucide-react";
+import TextField from "../../components/TextField";
 
 export default function SignUpPage() {
  
@@ -11,10 +12,16 @@ export default function SignUpPage() {
     const [name, setName] = useState<string>();
     const [password, setPassword] = useState<string>();
 
+    const emailRef = useRef<HTMLInputElement>(null);
+    const nameRef = useRef<HTMLInputElement>(null);
+    const passwordRef = useRef<HTMLInputElement>(null);
+
     const handleEmailInput = (event:React.ChangeEvent<HTMLInputElement>) => { setEmail(event.target.value) };
     const handlePasswordInput = (event:React.ChangeEvent<HTMLInputElement>) => { setPassword(event.target.value) };
     const handleNameInput = (event:React.ChangeEvent<HTMLInputElement>) => { setName(event.target.value) };
     
+    const handleNevigateToLogin = () => { navigate("/account/signin") };
+
     const handleSubmit = async () => {
         const response = await fetch("http://127.0.0.1:5000/auth/signup", {
             method: 'POST',
@@ -41,34 +48,44 @@ export default function SignUpPage() {
                 </div>
                 <div className="flex flex-col w-full h-auto gap-4 font-marquee text-xl">
                     <div className="w-full h-fit">
-                        <input  required
-                                id="name" 
-                                title="name" 
-                                placeholder="Full Name"
-                                onChange={ handleNameInput } 
-                                className="w-full h-14 px-4 border" />
+                        <TextField  ref={ nameRef }  
+                                    required
+                                    title={ "namek" } 
+                                    placeholder="Full Name"
+                                    onChange={ handleNameInput } />
                     </div>
                     <div className="w-full h-fit">
-                        <input  required
-                                id="email" 
-                                title="email" 
-                                placeholder="Email Address"
-                                onChange={ handleEmailInput } 
-                                className="w-full h-14 px-4 border" />
+                        <TextField  ref={ emailRef }
+                                    required
+                                    id="email" 
+                                    title="email" 
+                                    placeholder="Email Address"
+                                    onChange={ handleEmailInput } />
                     </div>
                     <div className="w-full h-fit">
-                        <input  required 
-                                title="password" 
-                                placeholder="Password" 
-                                onChange={ handlePasswordInput }
-                                className="w-full h-14 px-4 border" />
+                        <TextField  ref={ passwordRef }
+                                    required 
+                                    title="password" 
+                                    placeholder="Password" 
+                                    onChange={ handlePasswordInput } />
                     </div>
                 </div>
                 <div className="flex w-full h-12 gap-4 font-marquee">
-                    <Link to={"/account/signin"} className="flex items-center justify-center h-full w-1/2 border cursor-pointer">
+                    {/* <Link to={"/account/signin"} className="flex items-center justify-center h-full w-1/2 border cursor-pointer">
                         <span className="">Back to Login</span>
-                    </Link>
-                    <button type="submit" onSubmit={ handleSubmit } className="h-full w-1/2 border">Create</button>
+                    </Link> */}
+                    <Button type="button"
+                            onClick={ handleNevigateToLogin } 
+                            color={"primary"} 
+                            size="full" >
+                                Back to Login
+                    </Button>
+                    <Button type="submit"
+                            onSubmit={ handleSubmit } 
+                            color="secondary" 
+                            size="full" >
+                                Create
+                    </Button>
                 </div>
             </div>
         </div>

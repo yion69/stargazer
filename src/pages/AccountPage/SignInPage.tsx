@@ -1,33 +1,55 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import GoogleButton from "../../components/GoogleButton";
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
+import TextField from "../../components/TextField";
+import Button from "../../components/Button";
+
+type LoginFailedType =  'USER-DOES-NOT-EXISTS' | 'INCORRECT-PASSWORD' | 
+                        'SOMETHING-WENT-WRONG' | 'EMAIL-REQUIRED' |
+                        'PASSWORD-REQUIRED' | 'EMAIL-PASSWORD-REQUIRED'
 
 export default function SignInPage() {
 
+    const navigate = useNavigate();
+
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+    const [loginError, setLoginError] = useState<LoginFailedType | null >(null);
+
+    const errorMessages: Record<LoginFailedType, string> = {
+        'EMAIL-REQUIRED': "Email Address Required",
+        'PASSWORD-REQUIRED': "Password Required",
+        'EMAIL-PASSWORD-REQUIRED': "Email Address & Password Required",
+        'INCORRECT-PASSWORD': "Incorrect Username or Password",
+        'USER-DOES-NOT-EXISTS': "Account Does Not Exist",
+        'SOMETHING-WENT-WRONG': "Something Went Wrong"
+    };
 
     const handleEmailInput = (e:React.ChangeEvent<HTMLInputElement>) => { setEmail(e.target.value) };
     const handlePasswordInput = (e:React.ChangeEvent<HTMLInputElement>) => { setPassword(e.target.value) };
 
-    const handleGoogleLogin = async () => {
-        window.location.href = "http://127.0.0.1:5000/auth/google_login";
-    }
+    const handleNavigateToSignUp = () => { navigate("/account/signup") };
+
+    const handleGoogleLogin = async () => { window.location.href = "http://127.0.0.1:5000/auth/google_login" };
     
     const handleLogin = async () => {
 
-        console.log(`Email ==> ${email} | Password ==> ${password}`)
+        if (!email.trim() && !password.trim() ) { 
 
-            if (!email.trim() && !password.trim() ) { 
-                alert("Email & Password Required"); 
-                return
-            } else if (!email) { 
-                alert("Email Required");
-                return
-            } else if (!password) { 
-                alert("Password Required");
-                return
-            }
+            setLoginError('EMAIL-PASSWORD-REQUIRED');
+            return
+
+        } else if (!email) { 
+
+            setLoginError('EMAIL-REQUIRED')
+            return
+
+        } else if (!password) { 
+
+            setLoginError('PASSWORD-REQUIRED')
+            return
+        
+        }
 
         const res = await fetch("http://127.0.0.1:5000/auth/login", {
                 method: "POST",
@@ -42,9 +64,43 @@ export default function SignInPage() {
                 })
             }
         )
+        
         const data = await res.json();
+        
+        if (!res.ok) {
+            if ( res.status === 401 ) {
+
+                console.error(data.error);
+                setLoginError('INCORRECT-PASSWORD');       
+
+            } else if ( res.status === 404 ) {
+                
+                console.error(data.error)
+                setLoginError('USER-DOES-NOT-EXISTS');
+
+            } else {
+
+                console.error("Login Failed")
+                setLoginError('SOMETHING-WENT-WRONG');
+            
+            }
+            
+            return
+        }
+
         console.log(data);
     }
+
+    useEffect(() => {
+        const timeout = setTimeout(() =>
+            setLoginError( null )
+        ,5000)
+
+        return () => {
+            clearTimeout( timeout )
+        }
+
+    }, [ loginError]) 
 
     return (
         <div className="flex justify-center items-center w-full h-auto min-h-[75dvh] text-base lg:text-lg">
@@ -63,24 +119,48 @@ export default function SignInPage() {
                     <div className="w-full h-[1px] bg-zinc-950"></div>
                 </div>
 
-                <div className="flex flex-col w-full h-2/6 gap-2 font-marquee text-xl">
-                    <input  required 
-                            title="email" 
-                            placeholder="Email Address"
-                            onChange={ handleEmailInput } 
-                            className="w-full h-14 px-4 border" />
+                <div className="flex flex-col w-full h-2/6 gap-2 text-xl">
+                {
+                    loginError && 
+                    <label htmlFor="emailField" className="font-inter text-sm text-red-500">
+                        { errorMessages[loginError] || 'Unknown Error'}
+                    </label>
+                }
 
-                    <input  required 
-                            title="password" 
-                            placeholder="Password" 
-                            onChange={ handlePasswordInput }
-                            className="w-full h-14 px-4 border" />
+                    <TextField  required 
+                                id="emailField"
+                                title="email" 
+                                placeholder="Email Address"
+                                onChange={ handleEmailInput }
+                                className={ 
+                                (loginError === 'PASSWORD-REQUIRED' || loginError === null)
+                                    ? ''
+                                    : 'border-red-500!'
+                                } />
+
+                    <TextField  required
+                                title="password" 
+                                placeholder="Password" 
+                                onChange={ handlePasswordInput }
+                                className={  
+                                (loginError === 'EMAIL-REQUIRED' || loginError === null)
+                                    ? ''
+                                    : 'border-red-500!'
+                                } />
                 </div>
                 <div className="flex w-full h-12 gap-4 font-marquee">
-                    <button type="button" onClick={ handleLogin } className="h-full w-1/2 border cursor-pointer">Login</button>
-                    <Link to={"/account/signup"} className="flex items-center justify-center h-full w-1/2 border cursor-pointer">
-                        <span className="">Create Account</span>
-                    </Link>
+                    <Button type="button"
+                            onClick={ handleNavigateToSignUp } 
+                            color={"primary"} 
+                            size={"full"} >
+                                Create Account
+                    </Button>
+                    <Button type="button"
+                            onClick={handleLogin} 
+                            color="secondary" 
+                            size="full" >
+                                Login
+                    </Button>
                 </div>
             </div>
         </div>

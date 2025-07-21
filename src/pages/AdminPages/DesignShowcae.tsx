@@ -2,6 +2,7 @@ import { CircleQuestionMark } from "lucide-react";
 import Button, { type ButtonColor, type ButtonSize } from "../../components/Button";
 import TextField, { type TextFieldType } from "../../components/TextField";
 import clsx from "clsx";
+import Item from "../../components/Item";
 
 export default function DesignShowcase() {
 
@@ -98,6 +99,22 @@ export default function DesignShowcase() {
                                     disabled
                                     placeholder={ "Disabled" } 
                                     className={ clsx( "font-mono") } />
+                </div>
+            </div>
+            <div className="flex w-full h-auto">
+                <div className="grid grid-cols-3 h-[60dvh] w-full gap-4">
+                    <Item heading={"Cat Placeholder"} 
+                        subheading={"Cattato"} 
+                        price={69}
+                        className="w-full h-full" />
+                    <Item heading={"Cat Placeholder"} 
+                        subheading={"Cattato"} 
+                        price={69}
+                        className="max-h-5/6" />
+                    <Item heading={"Cat Placeholder"} 
+                        subheading={"Cattato"} 
+                        price={69}
+                        className="max-h-1/2" />
                 </div>
             </div>
         </div>

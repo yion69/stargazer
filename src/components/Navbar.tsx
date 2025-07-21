@@ -59,7 +59,7 @@ export default function Navbar() {
                     <a href="#" className={clsx("flex items-center justify-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "lg:justify-end" : "lg:justify-center")}>
                         <ScrambleText>{t("search")}</ScrambleText>
                     </a>
-                    <Link to="/account" className={clsx("flex items-center justify-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "lg:justify-end" : "text-[0.60rem] scale-125 lg:justify-center")}>
+                    <Link to="/account/signin" className={clsx("flex items-center justify-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "lg:justify-end" : "text-[0.60rem] scale-125 lg:justify-center")}>
                         <ScrambleText>{t("account")}</ScrambleText>
                     </Link>
                 </div>
