@@ -30,7 +30,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
                         type={ inputType } 
                         id="input-element"
                         {...props}
-                        className="w-full h-full px-4 border-none outline-none focus:ring-0" />
+                        className="w-full h-full px-4 border-none outline-none ring-0 focus:ring-0" />
                 
                 {
                     type == 'password' && (
