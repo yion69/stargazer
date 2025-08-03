@@ -2,10 +2,11 @@
 Check out repo for backend [here](https://github.com/yion69/Stargazer-Backend)
 - https://github.com/yion69/Stargazer-Backend
 
-# React + TypeScript + Vite
+# Stargazer 
+
+React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
@@ -56,4 +57,3 @@ export default tseslint.config({
   },
 })
 ```
-# stargazer
