@@ -3,6 +3,7 @@ import GoogleButton from "../../components/GoogleButton";
 import { useNavigate } from "react-router";
 import TextField from "../../components/TextField";
 import Button from "../../components/Button";
+import { useAuth } from "../../utils/AuthValidation";
 
 type LoginFailedType =  'USER-DOES-NOT-EXISTS' | 'INCORRECT-PASSWORD' | 
                         'SOMETHING-WENT-WRONG' | 'EMAIL-REQUIRED' |
@@ -11,6 +12,8 @@ type LoginFailedType =  'USER-DOES-NOT-EXISTS' | 'INCORRECT-PASSWORD' |
 export default function SignInPage() {
 
     const navigate = useNavigate();
+
+    const auth = useAuth();
 
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
@@ -30,7 +33,7 @@ export default function SignInPage() {
 
     const handleNavigateToSignUp = () => { navigate("/account/signup") };
 
-    const handleGoogleLogin = async () => { window.location.href = "http://127.0.0.1:5000/auth/google_login" };
+    const handleGoogleLogin = () => { auth.google_login() };
     
     const handleLogin = async () => {
 
@@ -51,7 +54,7 @@ export default function SignInPage() {
         
         }
 
-        const res = await fetch("http://127.0.0.1:5000/auth/login", {
+        const res = await fetch("http://localhost:5000/auth/login", {
                 method: "POST",
                 headers: {
                     'Access-Control-Allow-Origin': "*",

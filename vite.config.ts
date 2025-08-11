@@ -1,20 +1,20 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import tailwindcss from '@tailwindcss/vite'
-import {visualizer} from 'rollup-plugin-visualizer'
+import { visualizer } from 'rollup-plugin-visualizer'
 
 // https://vite.dev/config/
 export default defineConfig(() => ({
   plugins: [
     react(),
-    tailwindcss(), 
+    tailwindcss(),
   ],
   build: {
     rollupOptions: {
       plugins: [
         visualizer({
           open: true,
-          json: true ,
+          json: true,
           filename: "bundle-stats.json",
           gzipSize: true,
           brotliSize: true
@@ -24,7 +24,17 @@ export default defineConfig(() => ({
   },
   optimizeDeps: {
     include: [
-      
+
     ]
-  }
-}))
+  },
+
+  server: {
+    port: 5173,
+    hmr: {
+      host: 'localhost',
+      protocol: 'ws',
+      port: 5173,
+    },
+  },
+}
+))

@@ -43,7 +43,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 disabled = { loading }
                 className={ clsx(
                     "relative w-fit h-13 px-4 flex items-center justify-center",
-                    "text-base border rounded-xs font-inter cursor-pointer",
+                    "border rounded-xs font-inter cursor-pointer",
                     "transition duration-200 active:scale-90", 
                     className, 
                     loading && "cursor-not-allowed opacity-80 pointer-events-none",

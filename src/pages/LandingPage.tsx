@@ -74,7 +74,6 @@ export default function Landing() {
             if (response.ok) {
                 const extracted = await response.json();
                 setFetchData(extracted)
-                console.log(extracted);
             } else {
                 console.error('Failed to fetch items.');
             }
@@ -82,9 +81,23 @@ export default function Landing() {
             console.error('Error fetching items:', error);
         }
     };
+    
+    const handleUserDataFetch = async () => {
 
+        const params = new URLSearchParams(window.location.search);
+        const authCheck = params.get("auth_check")
+
+        if (authCheck) {
+            const response = await fetch('http://localhost:5000/getcookies', {
+                method: 'POST',
+                
+            })
+        }
+    }
+    
     useEffect(() => {
         handleFetch();
+        handleUserDataFetch();
     }, [])
 
     return (
