@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router";
-import { useAuth } from "../../utils/AuthValidation";
+import { useAuth } from "../../utils/useAuth";
 
 export default function Account() {
     

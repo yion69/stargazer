@@ -1,5 +1,5 @@
 import { Loader2 } from "lucide-react";
-import { useAuth, type AuthorizationType } from "../../utils/AuthValidation";
+import { useAuth, type AuthorizationType } from "../../utils/useAuth";
 import { useEffect } from "react";
 
 export default function Middleware() {

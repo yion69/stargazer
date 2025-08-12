@@ -53,9 +53,9 @@ export default function Navbar() {
                 </div>
 
                 <div className={clsx("order-3 grid grid-cols-3 w-full gap-2 lg:gap-4 text-base md:text-2xl", lang == "EN" ? "lg:text-2xl" : "text-xs lg:text-base")}>
-                    <a href="#" className={clsx("flex items-center justify-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "lg:justify-end" : "lg:justify-center")}>
+                    <Link to="/cart" className={clsx("flex items-center justify-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "lg:justify-end" : "lg:justify-center")}>
                         <ScrambleText>{t("cart")}</ScrambleText>
-                    </a>
+                    </Link>
                     <a href="#" className={clsx("flex items-center justify-center hover:font-bold hover:scale-105 transition-all duration-200", lang == "EN" ? "lg:justify-end" : "lg:justify-center")}>
                         <ScrambleText>{t("search")}</ScrambleText>
                     </a>

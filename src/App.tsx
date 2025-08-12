@@ -6,12 +6,17 @@ import ScrollSmootherWrapper from './utils/ScrollSmoother';
 import Footer from './components/Footer';
 import { lazy, Suspense } from 'react';
 import Loading from './components/Loading';
-import AuthProvider from './utils/AuthValidation';
+import AuthProvider from './utils/useAuth';
+import CartProvider from './utils/useCart';
   
 const LandingPage = lazy(() => import('./pages/LandingPage'));
+
 const StorePage = lazy(() => import('./pages/StorePage'));
 const ItemPage = lazy(() => import('./pages/StorePages/ItemPage'));
 const BrandPage = lazy(() => import('./pages/StorePages/BrandPage'));
+
+const CartPage = lazy(() => import('./pages/CartPages/CartPage'))
+
 const Account = lazy(() => import('./pages/AccountPage/AccountPage'));
 const AccountSignIn = lazy(() => import('./pages/AccountPage/SignInPage'));
 const AccountSignUp = lazy(() => import('./pages/AccountPage/SignUpPage'));
@@ -28,38 +33,40 @@ function App() {
     <ScrollSmootherWrapper>
       <BrowserRouter>
         <AuthProvider>
+          <CartProvider>
+            <div className='flex items-center justify-center w-full'>
+              <Navbar />
+            </div>  
 
-          <div className='flex items-center justify-center w-full'>
-            <Navbar />
-          </div>  
+            <div className='flex items-center justify-center w-full md:w-10/12 lg:w-8/12 h-auto mx-auto'>
+              <Suspense fallback={ <Loading /> }>
+                <Routes>
+                  <Route path='/' element={
+                    <LandingPage />
+                  } />
+                  <Route path='/store' element={ <StorePage /> }>
+                    <Route path='/store/all' element={ <BrandPage /> } />
+                    <Route path='/store/:id' element={ <ItemPage /> } />
+                  </Route>
+                  <Route path='/cart' element={ <CartPage /> } />
+                  <Route path='/admin' element={ <AdminDashboard/> } >
+                    <Route path='/admin/items-management' element={ <AddItemDashboard /> } />
+                    <Route path='/admin/components' element={ <DesignsDashboard /> } />
+                  </Route>
+                  <Route path='/account' element={ <Account /> } >
+                    <Route path='/account/signin' element={ <AccountSignIn /> } />
+                    <Route path='/account/signup' element={ <AccountSignUp /> } />
+                    <Route path='/account/profile' element={ <AccountProfile /> } />
+                  </Route>
+                  <Route path='/authentication/callback' element={ <Middleware /> } />
+                </Routes>  
+              </Suspense>
+            </div>
 
-          <div className='flex items-center justify-center w-full md:w-10/12 lg:w-8/12 h-auto mx-auto'>
-            <Suspense fallback={ <Loading /> }>
-              <Routes>
-                <Route path='/' element={
-                  <LandingPage />
-                } />
-                <Route path='/store' element={ <StorePage /> }>
-                  <Route path='/store/all' element={ <BrandPage /> } />
-                  <Route path='/store/:id' element={ <ItemPage /> } />
-                </Route>
-                <Route path='/admin' element={ <AdminDashboard/> } >
-                  <Route path='/admin/items-management' element={ <AddItemDashboard /> } />
-                  <Route path='/admin/components' element={ <DesignsDashboard /> } />
-                </Route>
-                <Route path='/account' element={ <Account /> } >
-                  <Route path='/account/signin' element={ <AccountSignIn /> } />
-                  <Route path='/account/signup' element={ <AccountSignUp /> } />
-                  <Route path='/account/profile' element={ <AccountProfile /> } />
-                </Route>
-                <Route path='/authentication/callback' element={ <Middleware /> } />
-              </Routes>  
-            </Suspense>
-          </div>
-
-          <div className='flex items-center justify-center w-full'>
-            <Footer />
-          </div>
+            <div className='flex items-center justify-center w-full'>
+              <Footer />
+            </div>
+          </CartProvider>
         </AuthProvider>
       </BrowserRouter>
     </ScrollSmootherWrapper>

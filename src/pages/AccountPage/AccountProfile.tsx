@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useAuth, type UserData } from "../../utils/AuthValidation";
+import { useAuth, type UserData } from "../../utils/useAuth";
 import Button from "../../components/Button";
 import TextField from "../../components/TextField";
 

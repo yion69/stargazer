@@ -3,7 +3,7 @@ import GoogleButton from "../../components/GoogleButton";
 import { useNavigate } from "react-router";
 import TextField from "../../components/TextField";
 import Button from "../../components/Button";
-import { useAuth } from "../../utils/AuthValidation";
+import { useAuth } from "../../utils/useAuth";
 
 type LoginFailedType =  'USER-DOES-NOT-EXISTS' | 'INCORRECT-PASSWORD' | 
                         'SOMETHING-WENT-WRONG' | 'EMAIL-REQUIRED' |
