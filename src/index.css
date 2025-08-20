@@ -13,6 +13,7 @@
   font-family: "UnicaOne";
   src: url("/fonts/UnicaOne.ttf");
 }
+
 @font-face {
   font-family: "Inter";
   src: url("/fonts/Inter-VariableFont_opsz,wght.ttf");
@@ -28,13 +29,12 @@
   --color-background: #f7f7f7;
 }
 
-@a
-
 .vt323-regular {
   font-family: "VT323", monospace;
   font-weight: 400;
   font-style: normal;
 }
+
 .unica-one-regular {
   font-family: "Unica One", sans-serif;
   font-weight: 400;
@@ -46,4 +46,3 @@
   font-weight: 400;
   font-style: normal;
 }
-
