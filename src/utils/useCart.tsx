@@ -2,7 +2,7 @@ import { createContext, useContext, useState, type ReactNode } from "react"
 
 type CartContext = {
     cart: CartProduct[] | null
-    get_cart: () => void
+    get_cart: () => Promise<CartProduct[] | null>
     add_item_to_cart: ({ product_id, product_quantity }: { product_id: string, product_quantity: number }) => void
     remove_item_from_cart: ({ product_id }: { product_id: string }) => void
 }
@@ -41,9 +41,11 @@ export default function CartProvider({ children }: { children: ReactNode }) {
         const data = await response.json() as CartResponse
         const body = data.body
         const filteredList = body.filter((item) => item.product_status === 'cart') as CartProduct[]
-        setCart(filteredList)
 
-        // console.log("this is filtered", filteredList)
+        if (!filteredList) { console.error("Filtered List Error"); return null }
+
+        setCart(filteredList)
+        return filteredList
     }
 
     const add_item_to_cart = ({ product_id, product_quantity }: { product_id: string, product_quantity: number }) => {

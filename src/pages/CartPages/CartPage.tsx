@@ -4,45 +4,70 @@ import Button from "../../components/Button"
 import QuantityOptions from "../../components/QuantityOption"
 import { useCart } from "../../utils/useCart"
 
+interface MergedCartItem {
+    // cart fields
+    id: number
+    product_id: string
+    user_id: string
+    created_at: string
+    product_quantity: number
+    product_status: string
+
+    // product fields
+    item_id: string
+    item_name: string
+    item_price: number
+    item_brand: string
+    item_rating: number
+    item_sold: number
+    item_created_at: string
+    item_images: string[]
+}
+
 export default function Cart() {
 
     const { cart, get_cart } = useCart()
+    const [mergeCart, setMergeCart] = useState<MergedCartItem[]>([])
     const [total, setTotal] = useState()
 
+    const set_up_cart = async () => {
+        try {
+            const fetchCart = await get_cart()
+
+            if (!fetchCart) { throw new Error }
+
+            const cartIDs = fetchCart.map(item => item.product_id)
+            console.log(cartIDs)
+
+            const responseFromProductList = await fetch("http://localhost:5000/api/items/cart-items", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(cartIDs)
+            })
+
+            const data = await responseFromProductList.json()
+            const body = data.body
+
+            const merged = fetchCart.map((item, index) => ({
+                ...item,
+                ...body[index]
+            }))
+
+            setMergeCart(merged)
+
+        } catch (err) {
+            console.error(err)
+            return
+        }
+    }
+
     useEffect(() => {
-        get_cart()
+        set_up_cart()
     }, [])
 
-    function CartItem({ item_name = 'Item Placeholder', item_quantity = 4, item_brand = 'Brand Placeholder' }: { item_name: string, item_quantity: number, item_brand: string }) {
-
-        const [quantity, setQuantity] = useState<number>(item_quantity)
-
-        return (
-            <div className="flex w-full h-52 border-2 border-zinc-200 bg-zinc-100 px-4 py-6">
-                <div className="w-1/6 h-full bg-zinc-200"></div>
-                <div className="flex flex-col justify-center w-3/6 h-full px-4">
-                    <h1 className="text-4xl">{item_name}</h1>
-                    <p className="text-2xl">{item_brand}</p>
-                    <div className="flex w-fit h-fit mt-auto gap-10 text-lg">
-                        <h2>
-                            Color:
-                            <span> Black</span>
-                        </h2>
-                        <h2>
-                            Size:
-                            <span> XL</span>
-                        </h2>
-                    </div>
-                </div>
-                <div className="flex items-start justify-center w-1/6 h-full text-4xl">
-                    <h1 className="flex">$ 56.00</h1>
-                </div>
-                <div className="flex flex-col items-center justify-start w-1/6 h-full">
-                    <QuantityOptions value={quantity} setValue={setQuantity} />
-                </div>
-            </div>
-        )
-    }
+    useEffect(() +)
 
     return (
         <div className="flex flex-col w-screen h-auto gap-10 min-h-[50dvh] py-10">
@@ -52,8 +77,12 @@ export default function Cart() {
             </div>
             <div className="grid grid-cols-1 gap-4 w-full h-auto">
                 {
-                    cart && cart.map((item) => (
-                        <CartItem key={item.id} item_quantity={item.product_quantity} item_name={'dog'} item_brand={""} />
+                    mergeCart.map((item) => (
+                        <CartItem key={item.id}
+                            item_quantity={item.product_quantity}
+                            item_name={item.item_name}
+                            item_brand={item.item_brand}
+                            item_price={item.item_price} />
                     ))
                 }
             </div>
@@ -75,6 +104,47 @@ export default function Cart() {
                         Order
                     </Button>
                 </div>
+            </div>
+        </div>
+    )
+}
+
+function CartItem({
+    item_name,
+    item_quantity,
+    item_brand,
+    item_price
+}: {
+    item_name: string,
+    item_quantity: number,
+    item_brand: string,
+    item_price: number
+}) {
+
+    const [quantity, setQuantity] = useState<number>(item_quantity)
+
+    return (
+        <div className="flex w-full h-52 border-2 border-zinc-200 bg-zinc-100 px-4 py-6">
+            <div className="w-1/6 h-full bg-zinc-200"></div>
+            <div className="flex flex-col justify-center w-3/6 h-full px-4">
+                <h1 className="text-4xl">{item_name}</h1>
+                <p className="text-2xl">{item_brand}</p>
+                <div className="flex w-fit h-fit mt-auto gap-10 text-lg">
+                    <h2>
+                        Color:
+                        <span> Black</span>
+                    </h2>
+                    <h2>
+                        Size:
+                        <span> XL</span>
+                    </h2>
+                </div>
+            </div>
+            <div className="flex items-start justify-center w-1/6 h-full text-4xl">
+                <h1 className="flex">$ {item_price}</h1>
+            </div>
+            <div className="flex flex-col items-center justify-start w-1/6 h-full">
+                <QuantityOptions value={quantity} setValue={setQuantity} />
             </div>
         </div>
     )
